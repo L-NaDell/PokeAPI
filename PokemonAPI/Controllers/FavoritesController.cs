@@ -20,18 +20,20 @@ namespace PokemonAPI.Controllers
 
         public IActionResult Index()
         {
+            var model = new FavoritePokemonViewModel();
+
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            List<Favorites> Favorites = _context.Favorites.Where(x => x.UserId == userId).ToList();
+            model.Favorites = _context.Favorites.Where(x => x.UserId == userId).ToList();
             // // //
-            List<Pokemon> favoritePokemon = new List<Pokemon>();
 
-            foreach (Favorites fav in Favorites)
+
+            foreach (Favorites fav in model.Favorites)
             {
-                favoritePokemon.Add(DAL.ConvertToPokemonModelsFav(fav.PokedexNumber));
+                model.Pokemon.Add(DAL.ConvertToPokemonModelsFav(fav.PokedexNumber));
             }
             // // //
-            return View(favoritePokemon);
+            return View(model);
         }
     
 
@@ -62,15 +64,12 @@ namespace PokemonAPI.Controllers
 
             return RedirectToAction(nameof(AddToFavorites), favorites);
         }
+ 
         public IActionResult RemoveFromFavorites(int id)
         {
             Favorites f = _context.Favorites.Find(id);
-            return View(f);
-        }
-        [HttpPost]
-        public IActionResult RemoveFromFavorites(Favorites favorites)
-        {
-            _context.Favorites.Remove(favorites);
+
+            _context.Favorites.Remove(f);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
