@@ -121,8 +121,17 @@
         <div id="miniButtonGlass5"></div>
         <div id="barbutton3"></div>
         <div id="barbutton4"></div>
-        <div id="greyBox1"><div id="greyBox1Text2">Favorite <img src="https://www.clipartmax.com/png/middle/226-2265441_download-beating-pink-heart-emoji-icon-baby-pink-love-heart.png" height="10"/></div></div>
-        <div id="greyBox2"><div id="greyBox2Text2">See All Favorites</div></div>
+        <a asp-action="Index" asp-controller="Favorites" method="post">
+            <input hidden name="PokedexNumber" value="@Model.id" />
+            <input hidden name="Name" value="@Model.name" />
+            <input hidden name="Type" value="@Model.types[0].type.name" />
+            <input hidden name="Height" value="@Model.height" />
+            <input hidden name="Weight" value="@Model.weight" />
+            <div id="greyBox1"><div id="greyBox1Text2">Favorite  <input type="image"<img src="https://www.clipartmax.com/png/middle/226-2265441_download-beating-pink-heart-emoji-icon-baby-pink-love-heart.png" height="10" /></div></div>
+        </a>
+        <a asp-action="Index" asp-controller="Favorites">
+            <div id="greyBox2"><div id="greyBox2Text2">See All Favorites</div></div>
+        </a>
         <div id="bg_curve1_right"></div>
         <div id="bg_curve2_right"></div>
         <div id="curve1_right"></div>

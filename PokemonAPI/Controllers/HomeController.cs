@@ -56,12 +56,13 @@ namespace PokemonAPI.Controllers
             selection = DAL.ConvertTypeToPokemonModels(search, typeOfSearch);
             return View(selection);
         }
-        //public IActionResult Pokemon(int id)
-        //{
-        //    Pokemon p = DAL.ConvertToPokemonModels(id);
-        //    return View(p);
-        //}
-
+        // // // 
+        public IActionResult PokemonFav(int id)
+        {
+            Pokemon p = DAL.ConvertToPokemonModelsFav(id);
+            return View(p);
+        }
+        // // //
         public IActionResult Privacy()
         {
             return View();
