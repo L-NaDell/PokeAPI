@@ -54,6 +54,9 @@ namespace PokemonAPI.Controllers
             string search = types;
             SearchBy typeOfSearch = SearchBy.type;
             selection = DAL.ConvertTypeToPokemonModels(search, typeOfSearch);
+
+            string type = $"{search.Substring(0, 1).ToUpper()}{search.Substring(1)}";
+            ViewBag.Type = type;
             return View(selection);
         }
         // // // 
