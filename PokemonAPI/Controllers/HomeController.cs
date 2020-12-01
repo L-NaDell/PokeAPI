@@ -26,10 +26,17 @@ namespace PokemonAPI.Controllers
         {
             if (!string.IsNullOrWhiteSpace(Name))
             {
-                string search = Name;
-                SearchBy typeOfSearch = SearchBy.name;
-                Pokemon p = DAL.ConvertToPokemonModels(search, typeOfSearch);
-                return View(p);
+                try 
+                {
+                    string search = Name;
+                    SearchBy typeOfSearch = SearchBy.name;
+                    Pokemon p = DAL.ConvertToPokemonModels(search, typeOfSearch);
+                    return View(p);
+                }
+                catch
+                {
+                    return View("Search");
+                }                
             }
             else if (Id != 0)
             {
