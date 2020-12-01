@@ -24,28 +24,28 @@ namespace PokemonAPI.Controllers
 
         public IActionResult SearchResults(string Name, int Id)
         {
-            if (!string.IsNullOrWhiteSpace(Name))
-            {
-                try 
+                if (!string.IsNullOrWhiteSpace(Name))
                 {
-                    string search = Name;
-                    SearchBy typeOfSearch = SearchBy.name;
+                    try
+                    {
+                        string search = Name;
+                        SearchBy typeOfSearch = SearchBy.name;
+                        Pokemon p = DAL.ConvertToPokemonModels(search, typeOfSearch);
+                        return View(p);
+                    }
+                    catch
+                    {
+                        return View("Search");
+                    }
+                }
+                else if (Id != 0)
+                {
+                    string search = Id.ToString();
+                    SearchBy typeOfSearch = SearchBy.id;
                     Pokemon p = DAL.ConvertToPokemonModels(search, typeOfSearch);
                     return View(p);
                 }
-                catch
-                {
-                    return View("Search");
-                }                
-            }
-            else if (Id != 0)
-            {
-                string search = Id.ToString();
-                SearchBy typeOfSearch = SearchBy.id;
-                Pokemon p = DAL.ConvertToPokemonModels(search, typeOfSearch);
-                return View(p);
-            }
-            return View("");
+                return View("");
         }
         public IActionResult SearchType(string types)
         {

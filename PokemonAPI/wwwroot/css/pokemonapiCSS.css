@@ -595,7 +595,7 @@
     }
 
     div#stats {
-        height: 130px;
+        height: 160px;
         width: 280px;
         padding: 10px;
         background-color: #383838;
@@ -736,11 +736,11 @@
         background: -o-radial-gradient(#0abd0a, #057b05);
     }
 
-    div#yellowBox1 {
+    div#greyBox1 {
         width: 140px;
         height: 70px;
         z-index: 1;
-        background-color: #ffff00;
+        background-color: #383838;
         position: absolute;
         top: 415px;
         left: 25px;
@@ -748,17 +748,33 @@
         -webkit-border-radius: 15px;
         -moz-border-radius: 15px;
         -o-border-radius: 15px;
-        box-shadow: 0 0 20px #ff6600 inset;
-        -webkit-box-shadow: 0 0 20px #ff6600 inset;
-        -moz-box-shadow: 0 0 20px #ff6600 inset;
-        -o-box-shadow: 0 0 20px #ff6600 inset;
+        box-shadow: 0 0 20px #383838 inset;
+        -webkit-box-shadow: 0 0 20px #383838 inset;
+        -moz-box-shadow: 0 0 20px #383838 inset;
+        -o-box-shadow: 0 0 20px #383838 inset;
     }
 
-    div#yellowBox2 {
+    div#greyBox1Text1 {
+        font-size: 8px;
+        font-family: "Courier New", Courier, monospace;
+        color: white;
+        margin-top: 10px;
+        margin-left: 5px;
+    }
+
+    div#greyBox1Text2 {
+        font-size: 14px;
+        font-family: "Courier New", Courier, monospace;
+        color: white;
+        margin-top: 20px;
+        margin-left: 15px;
+    }
+
+    div#greyBox2 {
         width: 140px;
         height: 70px;
         z-index: 1;
-        background-color: #ffff00;
+        background-color: #383838;
         position: absolute;
         top: 415px;
         left: 185px;
@@ -766,11 +782,31 @@
         -webkit-border-radius: 15px;
         -moz-border-radius: 15px;
         -o-border-radius: 15px;
-        box-shadow: 0 0 20px #ff6600 inset;
-        -webkit-box-shadow: 0 0 20px #ff6600 inset;
-        -moz-box-shadow: 0 0 20px #ff6600 inset;
-        -o-box-shadow: 0 0 20px #ff6600 inset;
+        box-shadow: 0 0 20px #383838 inset;
+        -webkit-box-shadow: 0 0 20px #383838 inset;
+        -moz-box-shadow: 0 0 20px #383838 inset;
+        -o-box-shadow: 0 0 20px #383838 inset;
+        font-size: 8px;
+        font-family: "Courier New", Courier, monospace;
+        color: black;
     }
+
+    div#greyBox2Text1 {
+        font-size: 8px;
+        font-family: "Courier New", Courier, monospace;
+        color: white;
+        margin-top: 10px;
+        margin-left: 5px;
+    }
+
+    div#greyBox2Text2 {
+        font-size: 14px;
+        font-family: "Courier New", Courier, monospace;
+        color: white;
+        margin-top: 10px;
+        margin-left: 18px;
+    }
+
 }
 
 @media handheld and (orientation:portrait), (max-width:768px) {
