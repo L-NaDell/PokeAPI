@@ -59,11 +59,17 @@ namespace PokemonAPI.Controllers
             ViewBag.Type = type;
             return View(selection);
         }
-        //public IActionResult Pokemon(int id)
-        //{
-        //    Pokemon p = DAL.ConvertToPokemonModels(id);
-        //    return View(p);
-        //}
+        // // // 
+        public IActionResult PokemonFav(int id)
+        {
+            Pokemon p = DAL.ConvertToPokemonModelsFav(id);
+            return View(p);
+        }
+        // // //
+        public IActionResult Privacy()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

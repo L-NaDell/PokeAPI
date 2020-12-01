@@ -11,6 +11,7 @@ namespace PokemonAPI.Controllers
     public class FavoritesController : Controller
     {
         private readonly PokemonAPIContext _context;
+        public PokemonapiDAL DAL = new PokemonapiDAL();
 
         public FavoritesController(PokemonAPIContext context)
         {
@@ -19,12 +20,22 @@ namespace PokemonAPI.Controllers
 
         public IActionResult Index()
         {
+            var model = new FavoritePokemonViewModel();
+
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            List<Favorites> Favorites = _context.Favorites.Where(x => x.UserId == userId).ToList();
+            model.Favorites = _context.Favorites.Where(x => x.UserId == userId).ToList();
+            // // //
 
-            return View(Favorites);
+
+            foreach (Favorites fav in model.Favorites)
+            {
+                model.Pokemon.Add(DAL.ConvertToPokemonModelsFav(fav.PokedexNumber));
+            }
+            // // //
+            return View(model);
         }
+    
 
         // Create View Form
         [HttpGet]
@@ -52,6 +63,16 @@ namespace PokemonAPI.Controllers
             }
 
             return RedirectToAction(nameof(AddToFavorites), favorites);
+        }
+ 
+        public IActionResult RemoveFromFavorites(int id)
+        {
+            Favorites f = _context.Favorites.Find(id);
+
+            _context.Favorites.Remove(f);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }
